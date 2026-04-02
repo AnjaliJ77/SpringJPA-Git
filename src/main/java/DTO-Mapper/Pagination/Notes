@@ -1,0 +1,37 @@
+Pagination:
+breaking a lot oif info into small chuncks
+Instead of sending all data, we send data in small chunks (pages)
+With pagination
+→ API returns only:
+Page 0 → 10 records
+Page 1 → next 10
+Page 2 → next 10
+
+What is DTP Pattern:
+ is a pattern used to transfer data  b/n s/w application subsystem.
+it's a simple java classes 
+Lighweight
+
+
+Why we need DTO in SB
+To prevent exposing sensitive data
+Send only required fields to the client
+
+
+Steps:
+1. Create DTO package
+2. Create 2 classes one in RequestDTO another one is ResponseDTO
+3. Create the mapper package where we woll convert from RequestDTO yo entity and entity to ResponseDTO.
+
+
+when user entity Class has below fields
+class User
+ id, name, email, address, about, phnNo, password
+
+UserRequestDTO class:
+ name, email, address, about, phnNo, password
+User user=new User();
+
+user.setname(dto.getname);
+like wise for all fields.
+save(user);
