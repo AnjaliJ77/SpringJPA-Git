@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProRepo extends JpaRepository<ProductEntity, Long> {
+  ProductEntity getByname(String name);
 }
