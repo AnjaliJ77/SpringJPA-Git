@@ -1,6 +1,7 @@
 package ExceptionHandler;
 
 import ExceptionHandler.Global.ProIdNotFound;
+import ExceptionHandler.Global.ProductNameNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class ProService {
     ProRepo prorepo;
 
     public ProductEntity createUser(ProductEntity proentity) {
+
         return prorepo.save(proentity);
     }
 
@@ -50,6 +52,23 @@ public class ProService {
         upd.setName(proentity.getName());
         upd.setAddress(proentity.getAddress());
         return prorepo.save(proentity);
+
+    }
+
+    public Object getByName(String name) {
+
+        ProductEntity  byname=prorepo.getByname(name);
+        if(byname!=null){
+            return byname;
+
+        }
+        else {
+             throw new ProductNameNotFound("the product: "+name+ " is not found");
+        }
+
+
+
+        //return null;
 
     }
 }
